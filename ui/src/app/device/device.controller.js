@@ -517,7 +517,9 @@ export function DeviceController($rootScope, userService, deviceService, custome
     }
 
     function exportData($event) {
-
+        if ($event) {
+            $event.stopPropagation();
+        }
     }
 
     function unassignDevicesFromCustomer($event, items) {
