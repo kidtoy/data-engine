@@ -605,6 +605,7 @@ export default angular.module('thingsboard.locale', [])
                     "credentials": "Credentials",
                     "manage-credentials": "Manage credentials",
                     "delete": "Delete device",
+                    "export-data": "Exportar Dados",
                     "assign-devices": "Assign devices",
                     "assign-devices-text": "Assign { count, select, 1 {1 device} other {# devices} } to customer",
                     "delete-devices": "Delete devices",

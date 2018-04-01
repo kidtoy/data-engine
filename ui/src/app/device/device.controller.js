@@ -106,6 +106,7 @@ export function DeviceController($rootScope, userService, deviceService, custome
     vm.makePublic = makePublic;
     vm.unassignFromCustomer = unassignFromCustomer;
     vm.manageCredentials = manageCredentials;
+    vm.exportData = exportData;
 
     initController();
 
@@ -502,6 +503,10 @@ export function DeviceController($rootScope, userService, deviceService, custome
                 vm.grid.refreshList();
             });
         });
+    }
+
+    function exportData($event) {
+
     }
 
     function unassignDevicesFromCustomer($event, items) {
