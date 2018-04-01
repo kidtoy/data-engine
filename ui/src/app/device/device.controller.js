@@ -217,6 +217,17 @@ export function DeviceController($rootScope, userService, deviceService, custome
                 }
             );
 
+            deviceActionsList.push(
+                {
+                    onAction: function ($event, item) {
+                        vm.grid.exportData($event, item);
+                    },
+                    name: function() { return $translate.instant('device.export-data') },
+                    details: function() { return $translate.instant('device.export-data') },
+                    icon: "security"
+                }
+            );
+
             deviceGroupActionsList.push(
                 {
                     onAction: function ($event, items) {
