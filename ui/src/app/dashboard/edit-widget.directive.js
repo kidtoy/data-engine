@@ -21,7 +21,7 @@ import editWidgetTemplate from './edit-widget.tpl.html';
 /* eslint-enable import/no-unresolved, import/default */
 
 /*@ngInject*/
-export default function EditWidgetDirective($compile, $templateCache, types, widgetService, entityService, $q, $document, $mdDialog) {
+export default function EditWidgetDirective($compile, $templateCache, types, widgetService, entityService, $q, $document, $mdDialog, $log) {
 
     var linker = function (scope, element) {
         var template = $templateCache.get(editWidgetTemplate);
@@ -75,6 +75,10 @@ export default function EditWidgetDirective($compile, $templateCache, types, wid
                 function success(aliasInfo) {
                     var entity = aliasInfo.currentEntity;
                     if (entity) {
+                        $log.log(entity.entityType)
+                        $log.log(entity.id)
+                        $log.log(query)
+                        $log.log(type)
                         entityService.getEntityKeys(entity.entityType, entity.id, query, type, {ignoreLoading: true}).then(
                             function success(keys) {
                                 deferred.resolve(keys);
