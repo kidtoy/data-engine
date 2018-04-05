@@ -50,7 +50,7 @@ export function DeviceCardController(types) {
 
 /*@ngInject*/
 export function DeviceController($rootScope, userService, deviceService, customerService, $state, $stateParams,
-                                 $document, $mdDialog, $q,$http, $translate, types, $log, entityService) {
+                                 $document, $mdDialog, $q,$http, $translate, types, $log, attributeService) {
 
     var customerId = $stateParams.customerId;
 
@@ -522,7 +522,7 @@ export function DeviceController($rootScope, userService, deviceService, custome
         if ($event) {
             $event.stopPropagation();
         }
-        entityService.getEntityKeys("DEVICE","7f23eb50-35c5-11e8-9941-2d7599c20567",null,null,null).then(
+        attributeService.getEntityKeys("DEVICE","7f23eb50-35c5-11e8-9941-2d7599c20567",null,null,null).then(
             function success(data){
                 $log.log(data)
             }, function fail(){
