@@ -221,8 +221,8 @@ export function DeviceController($rootScope, userService, deviceService, custome
 
             deviceActionsList.push(
                 {
-                    onAction: function ($event, item) {
-                        vm.grid.exportData($event, item);
+                    onAction: function ($event, deviceId) {
+                        vm.grid.exportData($event, deviceId);
                     },
                     name: function() { return $translate.instant('device.export-data') },
                     details: function() { return $translate.instant('device.export-data') },
@@ -518,15 +518,18 @@ export function DeviceController($rootScope, userService, deviceService, custome
         });
     }
 
-    function exportData($event) {
+    function exportData($event, deviceId) {
         if ($event) {
             $event.stopPropagation();
         }
+        $log.log(deviceId)
         attributeService.getEntityKeys("DEVICE","7f23eb50-35c5-11e8-9941-2d7599c20567",null,null,null).then(
             function success(data){
                 $log.log(data)
+                // var keys = data.join()
+                // attributeService.getEntityTimeseriesValues('DEVICE','7f23eb50-35c5-11e8-9941-2d7599c20567', keys, null, null, null)
             }, function fail(){
-                $log.log("Wrong api")
+                $log.log("Failed to get data")
             }
         )
     }
