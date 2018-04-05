@@ -30,7 +30,7 @@
 <md-button ng-click="onDeleteDevice({event: $event})"
            ng-show="!isEdit && deviceScope === 'tenant'"
            class="md-raised md-primary">{{ 'device.delete' | translate }}</md-button>
-<md-button ng-click="onExportData({event: $event, deviceId: {device.id.id}})"
+<md-button ng-click="onExportData({event: $event, deviceId: device.id.id})"
            ng-show="!isEdit && deviceScope === 'tenant'"
            class="md-raised md-primary">{{ 'device.export-data' | translate }}</md-button>
 
