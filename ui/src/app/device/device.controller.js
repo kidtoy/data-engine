@@ -525,6 +525,8 @@ export function DeviceController($rootScope, userService, deviceService, custome
         entityService.getEntityKeys("DEVICE","7f23eb50-35c5-11e8-9941-2d7599c20567",null,null,null).then(
             function success(data){
                 $log.log(data)
+            }, function fail(){
+                $log.log("Wrong api")
             }
         )
     }
