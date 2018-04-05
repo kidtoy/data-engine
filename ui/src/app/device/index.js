@@ -31,7 +31,7 @@ export default angular.module('thingsboard.device', [
     thingsboardGrid,
     thingsboardApiUser,
     thingsboardApiDevice,
-    thingsboardApiCustomer
+    thingsboardApiCustomer,
 ])
     .config(DeviceRoutes)
     .controller('DeviceController', DeviceController)

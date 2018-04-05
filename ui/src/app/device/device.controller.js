@@ -20,6 +20,7 @@ import deviceCard from './device-card.tpl.html';
 import assignToCustomerTemplate from './assign-to-customer.tpl.html';
 import addDevicesToCustomerTemplate from './add-devices-to-customer.tpl.html';
 import deviceCredentialsTemplate from './device-credentials.tpl.html';
+import AttributeService from '../api/attribute.service'
 
 /* eslint-enable import/no-unresolved, import/default */
 
@@ -49,7 +50,7 @@ export function DeviceCardController(types) {
 
 /*@ngInject*/
 export function DeviceController($rootScope, userService, deviceService, customerService, $state, $stateParams,
-                                 $document, $mdDialog, $q, $translate, types) {
+                                 $document, $mdDialog, $q, $translate, types, $log) {
 
     var customerId = $stateParams.customerId;
 
@@ -106,6 +107,7 @@ export function DeviceController($rootScope, userService, deviceService, custome
     vm.makePublic = makePublic;
     vm.unassignFromCustomer = unassignFromCustomer;
     vm.manageCredentials = manageCredentials;
+
     vm.exportData = exportData;
 
     initController();
@@ -520,6 +522,11 @@ export function DeviceController($rootScope, userService, deviceService, custome
         if ($event) {
             $event.stopPropagation();
         }
+        AttributeService.getEntityKeys("DEVICE","7f23eb50-35c5-11e8-9941-2d7599c20567",null,null,null).then(
+            function success(data){
+                $log.log(data)
+            }
+        )
     }
 
     function unassignDevicesFromCustomer($event, items) {
