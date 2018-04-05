@@ -18,7 +18,7 @@ export default angular.module('thingsboard.api.attribute', [])
     .name;
 
 /*@ngInject*/
-function AttributeService($http, $q, $filter, types, telemetryWebsocketService) {
+function AttributeService($http, $q, $filter, types, telemetryWebsocketService, $log) {
 
     var entityAttributesSubscriptionMap = {};
 
@@ -43,6 +43,7 @@ function AttributeService($http, $q, $filter, types, telemetryWebsocketService) 
         } else if (type === types.dataKeyType.attribute) {
             url += 'attributes';
         }
+        $log.log(url)
         $http.get(url, config).then(function success(response) {
             var result = [];
             if (response.data) {

@@ -803,7 +803,6 @@ function EntityService($http, $q, $filter, $translate, $log, userService, device
         } else if (type === types.dataKeyType.attribute) {
             url += 'attributes';
         }
-        $log.log(url)
         $http.get(url, config).then(function success(response) {
             var result = [];
             if (response.data) {
