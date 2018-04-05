@@ -522,11 +522,17 @@ export function DeviceController($rootScope, userService, deviceService, custome
         if ($event) {
             $event.stopPropagation();
         }
+        // USA O DEVICEID NA FUNCAO ONDE PEDE DEVICE ID
+        // ESSAS 2 FUNCOES ESTAO NO ARQUIVO api/attribute.service.js
+        // TEM Q DAR UM JEITO DE RECEBER O TS AKI
         $log.log(deviceId)
-        attributeService.getEntityKeys("DEVICE","7f23eb50-35c5-11e8-9941-2d7599c20567",null,null,null).then(
+        attributeService.getEntityKeys("DEVICE",deviceId,null,null,null).then(
             function success(data){
+                // DATA CONTEM TODAS AS KEYS, SO PASSAR o keys como esta na funcao
                 $log.log(data)
-                // var keys = data.join()
+                var keys = data.join()
+                $log.log(keys)
+                // SO FAZER CHAMADA THEN PARA PEGAR O RESULTADO
                 // attributeService.getEntityTimeseriesValues('DEVICE','7f23eb50-35c5-11e8-9941-2d7599c20567', keys, null, null, null)
             }, function fail(){
                 $log.log("Failed to get data")
