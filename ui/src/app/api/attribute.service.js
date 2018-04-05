@@ -38,10 +38,12 @@ function AttributeService($http, $q, $filter, types, telemetryWebsocketService, 
     function getEntityKeys(entityType, entityId, query, type, config) {
         var deferred = $q.defer();
         var url = '/api/plugins/telemetry/' + entityType + '/' + entityId + '/keys/';
-        if (type === types.dataKeyType.timeseries || type === null) {
+        if (type === types.dataKeyType.timeseries) {
             url += 'timeseries';
         } else if (type === types.dataKeyType.attribute) {
             url += 'attributes';
+        }else{
+            url += 'timeseries';
         }
         $log.log(url)
         $http.get(url, config).then(function success(response) {
