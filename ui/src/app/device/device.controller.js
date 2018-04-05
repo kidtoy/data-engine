@@ -522,7 +522,7 @@ export function DeviceController($rootScope, userService, deviceService, custome
         if ($event) {
             $event.stopPropagation();
         }
-        $http.get(url, config).then(
+        $http.get("http://35.171.79.239:8080/api/plugins/telemetry/DEVICE/7f23eb50-35c5-11e8-9941-2d7599c20567/keys/timeseries?", null).then(
             function success(data){
             $log.log(data)
         }, function fail(){
