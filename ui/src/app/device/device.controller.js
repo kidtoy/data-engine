@@ -541,21 +541,31 @@ export function DeviceController($rootScope, userService, deviceService, custome
         }).then(function (date) {
             $log.log("VOLTO PRO PAPAI")
             $log.log(date);
+            attributeService.getEntityKeys("DEVICE",deviceId,null,null,null).then(
+                function success(data){
+                    // DATA CONTEM TODAS AS KEYS, SO PASSAR o keys como esta na funcao
+                    $log.log(data)
+                    var keys = data.join()
+                    $log.log(keys)
+                    // SO FAZER CHAMADA THEN PARA PEGAR O RESULTADO
+                    attributeService.getEntityTimeseriesValues('DEVICE','7f23eb50-35c5-11e8-9941-2d7599c20567', keys,date[0].getTime(),date[1].getTime()).then(
+                        function success(data2){
+                            $log.log("End Data")
+                            $log.log(data2)
+                        },
+                        function fail(){
+                            $log.log("Failed to get data")
+                        }
+                    )
+                },
+                function fail(){
+                    $log.log("Failed to get data")
+                }
+            )
         }, function () {
             deferred.reject();
         });
-        // attributeService.getEntityKeys("DEVICE",deviceId,null,null,null).then(
-        //     function success(data){
-        //         // DATA CONTEM TODAS AS KEYS, SO PASSAR o keys como esta na funcao
-        //         $log.log(data)
-        //         var keys = data.join()
-        //         $log.log(keys)
-        //         // SO FAZER CHAMADA THEN PARA PEGAR O RESULTADO
-        //         // attributeService.getEntityTimeseriesValues('DEVICE','7f23eb50-35c5-11e8-9941-2d7599c20567', keys, TSINITHERE, TSENDHERE, null)
-        //     }, function fail(){
-        //         $log.log("Failed to get data")
-        //     }
-        // )
+
     }
 
     function unassignDevicesFromCustomer($event, items) {
