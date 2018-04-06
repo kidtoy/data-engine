@@ -20,6 +20,8 @@ export default function ImportDialogController($scope, $mdDialog) {
 
     vm.cancel = cancel;
     vm.exportData = exportData;
+    vm.dateStart =  new Date(2018, 4, 1);
+    vm.dateEnd =  new Date(2018, 4, 30);
 
     function cancel() {
         $mdDialog.cancel();
@@ -27,7 +29,7 @@ export default function ImportDialogController($scope, $mdDialog) {
 
     function exportData() {
         $scope.theForm.$setPristine();
-        var date = [vm.dateStart, vm.dateEnd ]
+        let date = [vm.dateStart, vm.dateEnd]
         $mdDialog.hide(date);
     }
 }
