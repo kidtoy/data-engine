@@ -27,6 +27,7 @@ export default function ImportDialogController($scope, $mdDialog) {
 
     function exportData() {
         $scope.theForm.$setPristine();
-        $mdDialog.hide(vm.dateStart, vm.dateEnd);
+        var date = [vm.dateStart, vm.dateEnd ]
+        $mdDialog.hide(date);
     }
 }

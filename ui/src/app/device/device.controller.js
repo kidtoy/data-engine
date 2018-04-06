@@ -538,7 +538,7 @@ export function DeviceController($rootScope, userService, deviceService, custome
             skipHide: true,
             fullscreen: true,
             targetEvent: $event
-        }).then(function (dateStart, dateEnd) {
+        }).then(function (date) {
             $log.log("VOLTO PRO PAPAI")
             $log.log(dateStart);
             $log.log(dateEnd);
