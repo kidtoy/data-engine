@@ -548,7 +548,7 @@ export function DeviceController($rootScope, userService, deviceService, custome
                     var keys = data.join()
                     $log.log(keys)
                     // SO FAZER CHAMADA THEN PARA PEGAR O RESULTADO
-                    attributeService.getEntityTimeseriesValues('DEVICE','7f23eb50-35c5-11e8-9941-2d7599c20567', keys,date[0].getTime(),date[1].getTime()).then(
+                    attributeService.getEntityTimeseriesValues('DEVICE', deviceId, keys,date[0].getTime(),date[1].getTime(), undefined).then(
                         function success(data2){
                             $log.log("End Data")
                             $log.log(data2)

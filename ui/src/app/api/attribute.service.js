@@ -74,6 +74,7 @@ function AttributeService($http, $q, $filter, types, telemetryWebsocketService, 
         url += '?keys=' + keys;
         url += '&startTs=' + startTs;
         url += '&endTs=' + endTs;
+        $log.log(url);
         if (angular.isDefined(limit)) {
             url += '&limit=' + limit;
         }
