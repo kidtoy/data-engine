@@ -40,7 +40,7 @@
          Not a valid date!</span>
             </div>
         </form>
-        <md-button type="submit" class="md-raised md-primary">
+        <md-button ng-disabled="$root.loading || !theForm.$dirty || !theForm.$valid" type="submit" class="md-raised md-primary">
             EXPORTAR
         </md-button>
     </form>
