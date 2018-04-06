@@ -540,8 +540,7 @@ export function DeviceController($rootScope, userService, deviceService, custome
             targetEvent: $event
         }).then(function (date) {
             $log.log("VOLTO PRO PAPAI")
-            $log.log(dateStart);
-            $log.log(dateEnd);
+            $log.log(date);
         }, function () {
             deferred.reject();
         });
