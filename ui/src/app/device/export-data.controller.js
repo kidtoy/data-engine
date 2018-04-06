@@ -20,12 +20,13 @@ export default function ImportDialogController($scope, $mdDialog) {
 
     vm.cancel = cancel;
     vm.exportData = exportData;
+
     function cancel() {
         $mdDialog.cancel();
     }
 
     function exportData() {
         $scope.theForm.$setPristine();
-        $mdDialog.hide(vm.dateStart, vm.dateEnd);
+        $mdDialog.hide();
     }
 }
