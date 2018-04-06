@@ -13,10 +13,8 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import './import-dialog.scss';
-
 /*@ngInject*/
-export default function ImportDialogController($scope, $mdDialog, $log) {
+export default function ImportDialogController($scope, $mdDialog) {
 
     var vm = this;
 

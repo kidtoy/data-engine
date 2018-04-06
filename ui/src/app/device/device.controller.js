@@ -20,7 +20,7 @@ import deviceCard from './device-card.tpl.html';
 import assignToCustomerTemplate from './assign-to-customer.tpl.html';
 import addDevicesToCustomerTemplate from './add-devices-to-customer.tpl.html';
 import deviceCredentialsTemplate from './device-credentials.tpl.html';
-import exportDataTemplate from 'export-data.tpl.html';
+import exportDataTemplate from './export-data.tpl.html';
 // import AttributeService from '../api/attribute.service'
 
 /* eslint-enable import/no-unresolved, import/default */
@@ -528,6 +528,7 @@ export function DeviceController($rootScope, userService, deviceService, custome
         // ESSAS 2 FUNCOES ESTAO NO ARQUIVO api/attribute.service.js
         // TEM Q DAR UM JEITO DE RECEBER O TS AKI
         $log.log(deviceId)
+        $log.log(attributeService)
         $mdDialog.show({
             controller: 'exportDataController',
             controllerAs: 'vm',
