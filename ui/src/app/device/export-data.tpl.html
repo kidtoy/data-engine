@@ -1,0 +1,47 @@
+<!--
+
+    Copyright © 2016-2018 The Thingsboard Authors
+
+    Licensed under the Apache License, Version 2.0 (the "License");
+    you may not use this file except in compliance with the License.
+    You may obtain a copy of the License at
+
+        http://www.apache.org/licenses/LICENSE-2.0
+
+    Unless required by applicable law or agreed to in writing, software
+    distributed under the License is distributed on an "AS IS" BASIS,
+    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+    See the License for the specific language governing permissions and
+    limitations under the License.
+
+-->
+<md-dialog aria-label="EXPORTAR PDF">
+    <form name="theForm" ng-submit="vm.importFromJson()">
+        <md-toolbar>
+            <div class="md-toolbar-tools">
+                <h2 >"EXPORTAR PDF"</h2>
+                <span flex></span>
+                <md-button class="md-icon-button" ng-click="vm.cancel()">
+                    <ng-md-icon icon="close" aria-label="{{ 'dialog.close' | translate }}"></ng-md-icon>
+                </md-button>
+            </div>
+        </md-toolbar>
+        <md-progress-linear class="md-warn" md-mode="indeterminate" ng-disabled="!$root.loading" ng-show="$root.loading"></md-progress-linear>
+        <span style="min-height: 5px;" flex="" ng-show="!$root.loading"></span>
+        <form name="myForm" ng-controller="DateController as dateCtrl">
+            <input type="date" id="startDate" name="inputstart" ng-model="vm.dateStart"
+                   placeholder="yyyy-MM-dd" required />
+            <input type="date" id="endDate" name="inputend" ng-model="vm.dateEnd"
+                   placeholder="yyyy-MM-dd" required />
+            <div role="alert">
+     <span class="error" ng-show="myForm.input.$error.required">
+         Required!</span>
+                <span class="error" ng-show="myForm.input.$error.date">
+         Not a valid date!</span>
+            </div>
+        </form>
+        <md-button ng-disabled="!vm.dateEnd || !vm.dataStart"  type="submit" class="md-raised md-primary">
+            "EXPORTAR"
+        </md-button>
+    </form>
+</md-dialog>

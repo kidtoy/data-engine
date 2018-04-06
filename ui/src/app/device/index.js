@@ -24,6 +24,7 @@ import {DeviceController, DeviceCardController} from './device.controller';
 import AssignDeviceToCustomerController from './assign-to-customer.controller';
 import AddDevicesToCustomerController from './add-devices-to-customer.controller';
 import ManageDeviceCredentialsController from './device-credentials.controller';
+import ExportDataController from './export-data.controller'
 import DeviceDirective from './device.directive';
 
 export default angular.module('thingsboard.device', [
@@ -39,5 +40,6 @@ export default angular.module('thingsboard.device', [
     .controller('AssignDeviceToCustomerController', AssignDeviceToCustomerController)
     .controller('AddDevicesToCustomerController', AddDevicesToCustomerController)
     .controller('ManageDeviceCredentialsController', ManageDeviceCredentialsController)
+    .controller('exportDataController', ExportDataController)
     .directive('tbDevice', DeviceDirective)
     .name;

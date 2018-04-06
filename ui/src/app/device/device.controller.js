@@ -20,6 +20,7 @@ import deviceCard from './device-card.tpl.html';
 import assignToCustomerTemplate from './assign-to-customer.tpl.html';
 import addDevicesToCustomerTemplate from './add-devices-to-customer.tpl.html';
 import deviceCredentialsTemplate from './device-credentials.tpl.html';
+import exportDataTemplate from 'export-data.tpl.html';
 // import AttributeService from '../api/attribute.service'
 
 /* eslint-enable import/no-unresolved, import/default */
@@ -519,6 +520,7 @@ export function DeviceController($rootScope, userService, deviceService, custome
     }
 
     function exportData($event, deviceId) {
+        var deferred = $q.defer();
         if ($event) {
             $event.stopPropagation();
         }
@@ -526,18 +528,33 @@ export function DeviceController($rootScope, userService, deviceService, custome
         // ESSAS 2 FUNCOES ESTAO NO ARQUIVO api/attribute.service.js
         // TEM Q DAR UM JEITO DE RECEBER O TS AKI
         $log.log(deviceId)
-        attributeService.getEntityKeys("DEVICE",deviceId,null,null,null).then(
-            function success(data){
-                // DATA CONTEM TODAS AS KEYS, SO PASSAR o keys como esta na funcao
-                $log.log(data)
-                var keys = data.join()
-                $log.log(keys)
-                // SO FAZER CHAMADA THEN PARA PEGAR O RESULTADO
-                // attributeService.getEntityTimeseriesValues('DEVICE','7f23eb50-35c5-11e8-9941-2d7599c20567', keys, null, null, null)
-            }, function fail(){
-                $log.log("Failed to get data")
-            }
-        )
+        $mdDialog.show({
+            controller: 'exportDataController',
+            controllerAs: 'vm',
+            templateUrl: exportDataTemplate,
+            locals: {},
+            parent: angular.element($document[0].body),
+            skipHide: true,
+            fullscreen: true,
+            targetEvent: $event
+        }).then(function (dateStart, dateEnd) {
+            $log.log(dateStart);
+            $log.log(dateEnd);
+        }, function () {
+            deferred.reject();
+        });
+        // attributeService.getEntityKeys("DEVICE",deviceId,null,null,null).then(
+        //     function success(data){
+        //         // DATA CONTEM TODAS AS KEYS, SO PASSAR o keys como esta na funcao
+        //         $log.log(data)
+        //         var keys = data.join()
+        //         $log.log(keys)
+        //         // SO FAZER CHAMADA THEN PARA PEGAR O RESULTADO
+        //         // attributeService.getEntityTimeseriesValues('DEVICE','7f23eb50-35c5-11e8-9941-2d7599c20567', keys, TSINITHERE, TSENDHERE, null)
+        //     }, function fail(){
+        //         $log.log("Failed to get data")
+        //     }
+        // )
     }
 
     function unassignDevicesFromCustomer($event, items) {
