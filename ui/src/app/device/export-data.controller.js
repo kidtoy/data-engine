@@ -28,6 +28,8 @@ export default function ImportDialogController($scope, $mdDialog, $log) {
     function exportData() {
         $scope.theForm.$setPristine();
         $log.log("TO CLICKANDO POHA")
+        $log.log(vm.dateStart)
+        $log.log(vm.dateEnd)
         $mdDialog.hide();
     }
 }
