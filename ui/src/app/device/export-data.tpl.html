@@ -16,7 +16,7 @@
 
 -->
 <md-dialog aria-label="EXPORTAR PDF">
-    <form name="theForm" ng-submit="vm.exportData()">
+    <form name="theForm" >
         <md-toolbar>
             <div class="md-toolbar-tools">
                 <h2 >EXPORTAR PDF</h2>
@@ -40,7 +40,7 @@
          Not a valid date!</span>
             </div>
         </form>
-        <md-button ng-disabled="$root.loading || !theForm.$dirty || !theForm.$valid" type="submit" class="md-raised md-primary">
+        <md-button ng-disabled="$root.loading || !theForm.$dirty || !theForm.$valid" type="submit" class="md-raised md-primary" ng-submit="vm.exportData()">
             EXPORTAR
         </md-button>
     </form>
