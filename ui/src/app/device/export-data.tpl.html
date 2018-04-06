@@ -19,7 +19,7 @@
     <form name="theForm" ng-submit="vm.importFromJson()">
         <md-toolbar>
             <div class="md-toolbar-tools">
-                <h2 >"EXPORTAR PDF"</h2>
+                <h2 >EXPORTAR PDF</h2>
                 <span flex></span>
                 <md-button class="md-icon-button" ng-click="vm.cancel()">
                     <ng-md-icon icon="close" aria-label="{{ 'dialog.close' | translate }}"></ng-md-icon>
@@ -40,8 +40,8 @@
          Not a valid date!</span>
             </div>
         </form>
-        <md-button ng-disabled="!vm.dateEnd || !vm.dataStart"  type="submit" class="md-raised md-primary">
-            "EXPORTAR"
+        <md-button type="submit" class="md-raised md-primary">
+            EXPORTAR
         </md-button>
     </form>
 </md-dialog>
