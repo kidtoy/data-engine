@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 /*@ngInject*/
-export default function ImportDialogController($scope, $mdDialog) {
+export default function ImportDialogController($scope, $mdDialog, $log) {
 
     var vm = this;
 
@@ -27,6 +27,7 @@ export default function ImportDialogController($scope, $mdDialog) {
 
     function exportData() {
         $scope.theForm.$setPristine();
+        $log.log("TO CLICKANDO POHA")
         $mdDialog.hide();
     }
 }
